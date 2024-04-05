@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'franklin';
+}
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+
+.libre-franklin-uniquifier {
+  font-family: "Libre Franklin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+@font-face {
+  font-family:'libre';
+  src: url(./Fonts/Libre/LibreFranklin-Medium.ttf);
+  font-family: 'franklin';
+ src:url(./Fonts/itc-franklin-gothic-std/ITCFranklinGothicStd-Book.otf) 
+}
+
+:root {
+    --gray-bg: #e6e6e6;
+    --red: #931817;
+    --red-text:#d72321;
+    --gray-text:#545454;
+  }
+
+.nav-one{
+    font-family: url(./Fonts/itc-franklin-gothic-std/ITCFranklinGothicStd-Book.otf);
+}
+
+.nav-two{
+font-family: 'libre';
+font-size: 21px;
+color: white !important;
+}
+
+
+

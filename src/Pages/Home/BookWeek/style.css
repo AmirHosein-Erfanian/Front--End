@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "ITC"; 
+    src: url("./assets/Fonts/itc-franklin-gothic-std/ITCFranklinGothicStd-Book.otf")
+  }
+
+.book-week{
+    font-family: 'ITC' !important;
+}
