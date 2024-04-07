@@ -9,6 +9,7 @@ import SuperSecretStealDeals from './SuperSecretStealDeals';
 import IrishInterest from './IrishInterest';
 import PhilosophyPolitics from './PhilosophyPolitics';
 import ScienceFictionFantasy from './ScienceFictionFantasy';
+import Addres from './Addres';
 const Home = () => {
     return (
         <>
@@ -47,6 +48,7 @@ const Home = () => {
                 <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #dedede', borderWidth: '1px 0 0', margin: '30px 0 ' }} />
                 <ScienceFictionFantasy/>
                 <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #dedede', borderWidth: '1px 0 0', margin: '30px 0 ' }} />
+                <Addres/>
             </Stack>
         </>
     );
