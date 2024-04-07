@@ -18,7 +18,7 @@ const Home = () => {
                     width: '100%',
                     height: 'auto',
                     backgroundColor: '#F3F3F3',
-                    padding: '30px 130px',
+                    padding: '30px 160px',
                     display: 'flex',
                 }}>
                 <Box component={'div'}

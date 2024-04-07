@@ -25,8 +25,8 @@ function App() {
 
   return (
     <>
+    <CssBaseline/>
       <Navbar />
-      <CssBaseline/>
       <Box component={'section'}>
         <Routes>
           <Route path="/" element={<Home />} />
