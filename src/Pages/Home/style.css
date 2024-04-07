@@ -1,1 +1,8 @@
+@font-face {
+  font-family: "ITC";
+  src: url("../../assets/Fonts/itc-franklin-gothic-std/ITCFranklinGothicStd-Med.otf");
+}
 
+* {
+  font-family: "ITC";
+}

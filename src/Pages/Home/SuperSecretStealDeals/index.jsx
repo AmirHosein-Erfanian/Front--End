@@ -1,9 +1,9 @@
 import { Stack, Grid, Typography } from '@mui/material';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import pho from './assets/pho.jpg'
-const NewArrivalsCtgr = () => {
+
+const SuperSecretStealDeals = () => {
     return (
         <>
             <Stack component={'section'}  >
@@ -15,10 +15,10 @@ const NewArrivalsCtgr = () => {
                         padding: ''
                     }}>
                     <Typography variant='h4' sx={{ color: 'black' }}>
-                        New Arrivals
+                        Super Secret Steal Deals
                     </Typography>
                     <Link to={'/'} style={{ color: '#931817', textDecoration: "none" }}>
-                        More {'new arrivals'}
+                        More {'Super Secret Steal Deals'}
                     </Link>
                 </Stack>
                 <Grid container spacing={2}
@@ -41,7 +41,7 @@ const NewArrivalsCtgr = () => {
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-start',
-                                        gap:'15px'
+                                        gap: '15px'
 
                                     }}>
                                     <Typography variant='body1' sx={{ textDecoration: 'none', color: 'black', fontSize: '17px' }}>Pilgrim Soul: W. B. Yeats and the Ireland of His Time; Daniel Mulhall</Typography>
@@ -63,7 +63,7 @@ const NewArrivalsCtgr = () => {
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-start',
-                                        gap:'15px'
+                                        gap: '15px'
 
                                     }}>
                                     <Typography variant='body1' sx={{ textDecoration: 'none', color: 'black', fontSize: '17px' }}>Pilgrim Soul: W. B. Yeats and the Ireland of His Time; Daniel Mulhall</Typography>
@@ -85,7 +85,7 @@ const NewArrivalsCtgr = () => {
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-start',
-                                        gap:'15px'
+                                        gap: '15px'
 
                                     }}>
                                     <Typography variant='body1' sx={{ textDecoration: 'none', color: 'black', fontSize: '17px' }}>Pilgrim Soul: W. B. Yeats and the Ireland of His Time; Daniel Mulhall</Typography>
@@ -107,7 +107,7 @@ const NewArrivalsCtgr = () => {
                                     sx={{
                                         display: 'flex',
                                         alignItems: 'flex-start',
-                                        gap:'15px'
+                                        gap: '15px'
 
                                     }}>
                                     <Typography variant='body1' sx={{ textDecoration: 'none', color: 'black', fontSize: '17px' }}>Pilgrim Soul: W. B. Yeats and the Ireland of His Time; Daniel Mulhall</Typography>
@@ -123,4 +123,4 @@ const NewArrivalsCtgr = () => {
     );
 }
 
-export default NewArrivalsCtgr;
+export default SuperSecretStealDeals;
