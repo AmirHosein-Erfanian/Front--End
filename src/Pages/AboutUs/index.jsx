@@ -1,10 +1,12 @@
 import React from 'react';
-
+import { Stack } from '@mui/material';
 const AboutUs = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Stack >
+
+            </Stack>
+        </>
     );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Grid, List, ListItem, Typography, TextField, Button, IconButton } from '@mui/material';
+import { Stack, Grid, List, ListItem, Typography, TextField, Button, IconButton , Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -19,9 +19,9 @@ const Footer = () => {
             <Stack component={'div'}
                 sx={{
                     width: '100%',
-                    height: '400px',
+                    height: { lg: '400px', md: '400px', sm: 'auto', xs: 'auto' },
                     backgroundColor: '#FFFFF',
-                    padding: '42px 160px 10px  160px',
+                    padding: { lg: '42px 160px 10px  160px', md: '42px 2% 10px 2%' },
                     display: 'flex',
                 }}>
                 <Grid container
@@ -30,12 +30,14 @@ const Footer = () => {
                         color: '#9d9d9d',
                     }}
                 >
-                    <Grid item lg={3} >
-                        <List>
+                    <Grid item lg={3} md={3} sm={3} xs={12}>
+                        <List >
                             <ListItem>
                                 <Typography
                                     sx={{
-                                        fontSize: '16px'
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        fontSize: '16px',
+                                        textAlign: 'center',
                                     }} >
                                     Find Us
                                 </Typography>
@@ -44,6 +46,8 @@ const Footer = () => {
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     15A Wicklow Street,
@@ -53,6 +57,8 @@ const Footer = () => {
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     Dublin 2,
@@ -62,6 +68,8 @@ const Footer = () => {
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     Dublin
@@ -71,6 +79,8 @@ const Footer = () => {
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     secretbook@live.com
@@ -79,11 +89,13 @@ const Footer = () => {
                         </List>
                     </Grid>
 
-                    <Grid item lg={3}>
+                    <Grid item lg={3} md={3} sm={3} xs={12}>
                         <List>
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     Explore
@@ -91,60 +103,62 @@ const Footer = () => {
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/about-us'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        About Us
-                                    </Typography>
-                                </Link>
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/about-us'} style={{ color: '#9d9d9d' }}> About Us </Link>
+                                </Typography>
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/contact-us'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Contact Us
-                                    </Typography>
-                                </Link>
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/contact-us'} style={{ color: '#9d9d9d' }}>Contact Us</Link>
+                                </Typography>
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/terms-of-service'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Terms of service
-                                    </Typography>
-                                </Link>
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/terms-of-service'} style={{ color: '#9d9d9d' }}>Terms of service</Link>
+                                </Typography>
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Refund policy
-                                    </Typography>
-                                </Link>
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}>Refund policy</Link>
+                                </Typography>
                             </ListItem>
                         </List>
                     </Grid>
 
-                    <Grid item lg={3}>
+                    <Grid item lg={3} md={3} sm={3} xs={12}>
                         <List>
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     Information
@@ -152,60 +166,69 @@ const Footer = () => {
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Refund Policy
-                                    </Typography>
-                                </Link>
+
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}> Refund Policy</Link>
+                                </Typography>
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/privacy-policy'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Privacy Policy
-                                    </Typography>
-                                </Link>
+
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/privacy-policy'} style={{ color: '#9d9d9d' }}>Privacy Policy</Link>
+                                </Typography>
+
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/terms-of-service'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Terms of service
-                                    </Typography>
-                                </Link>
+
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/terms-of-service'} style={{ color: '#9d9d9d' }}> Terms of service</Link>
+                                </Typography>
+
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/shipping-policy'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Shipping Policy
-                                    </Typography>
-                                </Link>
+
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign:{lg:'auto',md:'auto',sm:'left',xs:'center'},
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/shipping-policy'} style={{ color: '#9d9d9d' }}> Shipping Policy</Link>
+                                </Typography>
+
                             </ListItem>
                         </List>
                     </Grid>
 
-                    <Grid item lg={3}>
+                    <Grid item lg={3} md={3} sm={3} xs={12}>
                         <List>
                             <ListItem>
                                 <Typography
                                     sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
                                         fontSize: '16px'
                                     }} >
                                     Newsletter
@@ -213,19 +236,21 @@ const Footer = () => {
                             </ListItem>
 
                             <ListItem>
-                                <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}>
-                                    <Typography
-                                        sx={{
-                                            fontSize: '16px',
-                                            '&:hover': { color: '#6A6A6A' }
-                                        }} >
-                                        Stay informed about the oddities we think are important.
-                                    </Typography>
-                                </Link>
+
+                                <Typography
+                                    sx={{
+                                        width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' },
+                                        textAlign: { lg: 'auto', md: 'auto', sm: 'left', xs: 'center' },
+                                        fontSize: '16px',
+                                        '&:hover': { color: '#6A6A6A' }
+                                    }} >
+                                    <Link to={'/refund-policy'} style={{ color: '#9d9d9d' }}> Stay informed about the oddities we think are important.</Link>
+                                </Typography>
+
                             </ListItem>
 
                             <ListItem>
-                                <TextField label="Email Address" color='error' />
+                                <TextField label="Email Address" color='error' sx={{width: { lg: 'auto', md: 'auto', sm: 'auto', xs: '100%' }}} />
                                 <Link to={'/'}>
                                     <Button variant="contained" sx={{
                                         color: 'black',
@@ -247,7 +272,7 @@ const Footer = () => {
                 </Grid>
                 <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #dedede', borderWidth: '1px 0 0', margin: '15px 0 ' }} />
                 <Grid container>
-                    <Grid item lg={12} sx={{ textAlign: 'center' }}>
+                    <Grid item lg={12} md={12} sm={12} xs={12} sx={{ textAlign: 'center' }}>
 
                         <IconButton aria-label="twitter" size='small'>
                             <Link to={'https://twitter.com/secretbookdub?lang=en#:~:text=The%20Secret%20Book%20And%20Record%20Store%20(%40secretbookdub)%20%7C%20Twitter'}><TwitterIcon color='primary' /></Link>
@@ -265,11 +290,16 @@ const Footer = () => {
                 </Grid>
                 <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #dedede', borderWidth: '1px 0 0', margin: '15px 0 ' }} />
                 <Grid container>
-                    <Grid item lg={6}>
-                        <Typography  variant='span' sx={{color:'#9d9d9d',fontSize:'12px'}}>© 2024 <Link to={'/'}>The Secret Bookstore</Link> </Typography>
+                    <Grid item lg={6} md={6} sm={6} xs={12} sx={{textAlign:{lg:"auto",md:'auto',sm:'auto',xs:'center'}}}>
+                        <Typography variant='span' sx={{ color: '#9d9d9d', fontSize: '12px' }}>© 2024 <Link to={'/'}>The Secret Bookstore</Link> </Typography>
                     </Grid>
-                    <Grid item lg={6} sx={{direction:'rtl'}}>
-                              <img src={oneicon}/> <img src={twoicon}/> <img src={threeicon}/> <img src={fouricon}/> <img src={fiveicon}/> <img src={sixicon}/> <img src={sevenicon}/> <img src={eighticon}/> <img src={nineicon}/>   
+                    <Grid item lg={6} md={6} sm={6} xs={12} sx={{ direction: {lg:'rtl',md:'rtl',sm:'rtl',xs:'auto'} }}>
+                      <Box sx={{
+                        display:'flex',
+                        justifyContent:'center'
+                      }}>
+                        <img src={oneicon} /> <img src={twoicon} /> <img src={threeicon} /> <img src={fouricon} /> <img src={fiveicon} /> <img src={sixicon} /> <img src={sevenicon} /> <img src={eighticon} /> <img src={nineicon} />
+                        </Box>  
                     </Grid>
                 </Grid>
             </Stack>
