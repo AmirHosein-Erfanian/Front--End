@@ -1,6 +1,7 @@
-import { Stack, Grid, Typography } from '@mui/material';
+import { Stack, Grid, Typography, Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import pho from './assets/pho.jpg'
 import fetchApi from '../../../Utils/fetchApi';
 const NewArrivalsCtgr = () => {
@@ -16,22 +17,21 @@ const NewArrivalsCtgr = () => {
 
         })();
     }, []);
-    const items = products?.map((e,index) => (
-        <Grid key={index} item lg={3}>
-            <Link to={'/'}>
+    const items = products?.map((e, index) => (
+        <Grid key={index} item lg={3} md={3} sm={3} xs={6}>
+            <Link to={`/product-detail/${e?.id}/${e?.attributes?.Name.split(" ").join("-")}`}>
                 <Stack component={'div'}
                     sx={{
                         height: '100%',
                         alignItems: 'center',
                         gap: '22px'
                     }}>
-                    <img src={import.meta.env.VITE_BASE_URL+e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '155px', height: '235px' }} />
+                    <Box sx={{ width: { lg: '155px', md: '155px', sm: '128px', xs: '155px' }, height: { lg: '235px', md: '235px', sm: '190px', xs: '235px' } }}><img src={import.meta.env.VITE_BASE_URL + e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '100%', height: "100%" }} /></Box>
                     <Stack component={'div'}
                         sx={{
                             display: 'flex',
                             alignItems: 'flex-start',
                             gap: '15px'
-
                         }}>
                         <Typography variant='body1' sx={{ textDecoration: 'none', color: 'black', fontSize: '17px' }}>{e?.attributes?.Name}</Typography>
                         <Typography sx={{ textDecoration: 'none', color: 'black', fontSize: '22px' }} >€{e?.attributes?.price},00</Typography>
@@ -48,22 +48,25 @@ const NewArrivalsCtgr = () => {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        padding: ''
+                        flexWrap: 'wrap',
+                        rowGap:{lg:'',md:'',sm:'30px',xs:'30px'},
                     }}>
-                    <Typography variant='h4' sx={{ color: 'black' }}>
+                    <Typography variant='h4' sx={{ color: 'black', width: { lg: 'auto', md: 'auto', sm: '95%', xs: '70%' } }}>
                         New Arrivals
                     </Typography>
-                    <Link to={'/'} style={{ color: '#931817', textDecoration: "none" }}>
-                        More {'new arrivals'}
-                    </Link>
+                    <Box sx={{ display: 'flex' }} >
+                        <Link to={'/products/New-Arrivals'} style={{ color: '#931817', textDecoration: "none" }}>
+                            More New Arrivals
+                        </Link><ChevronRightIcon color='error' size='small' />
+                    </Box>
                 </Stack>
                 <Grid container spacing={2}
                     sx={{
                         margin: '10px 0',
                         width: '100%',
-                        height: '400px'
+                        height: '75%'
                     }}>
-                        {items}
+                    {items}
                 </Grid>
             </Stack>
         </>

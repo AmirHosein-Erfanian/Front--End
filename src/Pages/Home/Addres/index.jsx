@@ -9,10 +9,10 @@ const Addres = () => {
             <Grid container
                 sx={{
                     width: '100%',
-                    height: '345px',
+                    height:{lg:'345px',md:'345px',sm:'auto',xs:'auto'}
                 }}
             >
-                <Grid item lg={6}>
+                <Grid item lg={6} md={6} sm={12} xs={12}>
                     <Stack component={'div'}
                         sx={{
                             width: '100%',
@@ -21,7 +21,8 @@ const Addres = () => {
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
-                            padding: '33px 0'
+                            padding: '33px 0',
+                            rowGap:{lg:'',md:'',sm:'20px',xs:'20px'}
                         }}>
                         <Typography variant="h5" sx={{ color: 'black' }} >
                             The Secret Bookstore
@@ -54,8 +55,8 @@ const Addres = () => {
                         </Link>
                     </Stack>
                 </Grid>
-                <Grid item lg={6} sx={{ height: '100%' }}>
-                    <img src={addre} alt=""
+                <Grid item lg={6} md={6} sm={12} xs={12} sx={{ height: '100%' }}>
+                    <img src={addre} alt="address"
                         style={{
                             width: '100%',
                             height: '100%'

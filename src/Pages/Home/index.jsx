@@ -18,7 +18,7 @@ const Home = () => {
                     width: '100%',
                     height: 'auto',
                     backgroundColor: '#F3F3F3',
-                    padding: '30px 160px',
+                    padding: {lg:'30px 13%',md:'30px 5%',sm:'30px 5%',xs:'30px 5%'},
                     display: 'flex',
                 }}>
                 <Box component={'div'}
@@ -28,10 +28,11 @@ const Home = () => {
                         alignItems: 'center',
                         margin: '15px 0',
                         width: '100%',
-                        height: '220px'
+                        height: '200px',
+                        padding:{lg:'0 12%',md:'0 5%',sm:'3% 0',xs:'8% 0'}
                     }}
                 >
-                    <img src={banner} alt="Banner" style={{ width: '73%', height: '100%' }} />
+                    <img src={banner} alt="Banner" style={{ width: '100%', height: '100%' }} />
                 </Box>
                 <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #dedede', borderWidth: '1px 0 0', margin: '30px 0 ' }} />
                 <BookWeek />

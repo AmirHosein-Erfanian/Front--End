@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Grid, Typography } from '@mui/material';
+import { Stack, Grid, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import pho from './assets/pho.jpg'
-
-const IrishInterest= () => {
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+const IrishInterest = () => {
     const [products, setproducts] = useState([]);
     useEffect(() => {
         (async () => {
@@ -16,16 +16,16 @@ const IrishInterest= () => {
 
         })();
     }, []);
-    const items = products?.map((e,index) => (
-        <Grid key={index} item lg={3}>
-            <Link to={'/'}>
+    const items = products?.map((e, index) => (
+        <Grid key={index} item lg={3} md={3} sm={3} xs={6}>
+            <Link to={`/product-detail/${e?.id}/${e?.attributes?.Name.split(" ").join("-")}`}>
                 <Stack component={'div'}
                     sx={{
                         height: '100%',
                         alignItems: 'center',
                         gap: '22px'
                     }}>
-                    <img src={import.meta.env.VITE_BASE_URL+e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '155px', height: '235px' }} />
+                    <Box sx={{ width: { lg: '155px', md: '155px', sm: '128px', xs: '155px' }, height: { lg: '235px', md: '235px', sm: '190px', xs: '235px' } }}><img src={import.meta.env.VITE_BASE_URL + e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '100%', height: "100%" }} /></Box>
                     <Stack component={'div'}
                         sx={{
                             display: 'flex',
@@ -42,31 +42,34 @@ const IrishInterest= () => {
     ))
     return (
         <>
-        <Stack component={'section'}  >
-            <Stack component={'section'}
-                sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: ''
-                }}>
-                <Typography variant='h4' sx={{ color: 'black' }}>
-                Irish Interest
-                </Typography>
-                <Link to={'/'} style={{ color: '#931817', textDecoration: "none" }}>
-                    More {'Irish Interest'}
-                </Link>
-            </Stack>
-            <Grid container spacing={2}
-                sx={{
-                    margin: '10px 0',
-                    width: '100%',
-                    height: '400px'
-                }}>
+            <Stack component={'section'}  >
+                <Stack component={'section'}
+                    sx={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        rowGap: { lg: '', md: '', sm: '30px', xs: '30px' },
+                    }}>
+                    <Typography variant='h4' sx={{ color: 'black', width: { lg: 'auto', md: 'auto', sm: '95%', xs: '70%' } }}>
+                        Irish Interest
+                    </Typography>
+                    <Box sx={{ display: 'flex' }} >
+                        <Link to={'/products/Irish-Interest'} style={{ color: '#931817', textDecoration: "none" }}>
+                            More Irish Interest
+                        </Link><ChevronRightIcon color='error' size='small' />
+                    </Box>
+                </Stack>
+                <Grid container spacing={2}
+                    sx={{
+                        margin: '10px 0',
+                        width: '100%',
+                        height: '75%'
+                    }}>
                     {items}
-            </Grid>
-        </Stack>
-    </>
+                </Grid>
+            </Stack>
+        </>
     );
 }
 

@@ -39,3 +39,11 @@ color: white !important;
 
 
 
+.css-9emuhu-MuiPaper-root-MuiDrawer-paper{
+  height:93% !important;
+  background-color: #931817 !important;
+}
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop{
+  background-color:transparent !important;
+}

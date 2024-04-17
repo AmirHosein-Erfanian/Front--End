@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Grid, Typography } from '@mui/material';
+import { Stack, Grid, Typography ,Box } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from 'react-router-dom';
 import pho from './assets/pho.jpg'
 
@@ -18,7 +19,7 @@ const ScienceFictionFantasy = () => {
         })();
     }, []);
     const items = products?.map((e,index) => (
-        <Grid key={index} item lg={3}>
+        <Grid key={index} item lg={3} md={3} sm={3} xs={6}>
             <Link to={'/'}>
                 <Stack component={'div'}
                     sx={{
@@ -26,7 +27,7 @@ const ScienceFictionFantasy = () => {
                         alignItems: 'center',
                         gap: '22px'
                     }}>
-                    <img src={import.meta.env.VITE_BASE_URL+e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '155px', height: '235px' }} />
+                    <Box sx={{ width: { lg: '155px', md: '155px', sm: '128px', xs: '155px' }, height: { lg: '235px', md: '235px', sm: '190px', xs: '235px' } }}><img src={import.meta.env.VITE_BASE_URL + e?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '100%', height: "100%" }} /></Box>
                     <Stack component={'div'}
                         sx={{
                             display: 'flex',
@@ -49,20 +50,23 @@ const ScienceFictionFantasy = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: ''
+                    flexWrap: 'wrap',
+                    rowGap:{lg:'',md:'',sm:'30px',xs:'30px'}
                 }}>
-                <Typography variant='h4' sx={{ color: 'black' }}>
+                    <Typography variant='h4' sx={{ color: 'black', width: { lg: 'auto', md: 'auto', sm: '95%', xs: '70%' } }}>
                 Science Fiction & Fantasy
                 </Typography>
-                <Link to={'/'} style={{ color: '#931817', textDecoration: "none" }}>
-                    More {'Science Fiction & Fantasy'}
-                </Link>
+                <Box sx={{ display: 'flex' }} >
+                        <Link to={'/products/Science-Fiction-&-Fantasy'} style={{ color: '#931817', textDecoration: "none" }}>
+                            More Science Fiction & Fantasy
+                        </Link><ChevronRightIcon color='error' size='small' />
+                    </Box>
             </Stack>
             <Grid container spacing={2}
                 sx={{
                     margin: '10px 0',
                     width: '100%',
-                    height: '400px'
+                    height: '75%'
                 }}>
                     {items}
             </Grid>

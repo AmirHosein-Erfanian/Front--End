@@ -20,6 +20,7 @@ import Shippingpolicy from './Pages/Shippingpolicy';
 import Termsofservice from './Pages/Termsofservice';
 import Testimonials from './Pages/Testimonials';
 import GiftVouchers from './Pages/GiftVouchers';
+import Categories from './Pages/Categories';
 function App() {
   const { token } = useSelector(state => state.auth)
 
@@ -32,8 +33,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login-register" element={<LoginRegister />} />
           <Route path="/cart" element={token ? <Cart /> : <Navigate to={'/login-register'} />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products/:categoryName" element={<Products />} />
           <Route path="/product-detail/:id/:name" element={<ProductDetail />} />
+          <Route path="/categories" element={<Categories/>} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/faq-s" element={<FAQs />} />
