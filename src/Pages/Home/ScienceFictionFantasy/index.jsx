@@ -20,7 +20,7 @@ const ScienceFictionFantasy = () => {
     }, []);
     const items = products?.map((e,index) => (
         <Grid key={index} item lg={3} md={3} sm={3} xs={6}>
-            <Link to={'/'}>
+            <Link to={`/product-detail/${e?.id}/${e?.attributes?.Name.split(" ").join("-")}`}>
                 <Stack component={'div'}
                     sx={{
                         height: '100%',
