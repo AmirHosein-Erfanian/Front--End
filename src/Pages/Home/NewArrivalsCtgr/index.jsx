@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import pho from './assets/pho.jpg'
-import fetchApi from '../../../Utils/fetchApi';
+// import fetchApi from '../../../Utils/fetchApi';
 const NewArrivalsCtgr = () => {
     const [products, setproducts] = useState([]);
     useEffect(() => {
