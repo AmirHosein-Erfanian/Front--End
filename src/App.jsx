@@ -5,7 +5,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
-import LoginRegister from './Pages/LoginRegister';
 import Cart from './Pages/Cart';
 import Products from './Pages/Products';
 import ProductDetail from './Pages/ProductDetail';
@@ -21,6 +20,9 @@ import Termsofservice from './Pages/Termsofservice';
 import Testimonials from './Pages/Testimonials';
 import GiftVouchers from './Pages/GiftVouchers';
 import Categories from './Pages/Categories';
+import LoginRegister from './Pages/LoginRegister';
+// import Login from './Pages/LoginRegister/Login';
+// import Register from './Pages/LoginRegister/Register';
 function App() {
   const { token } = useSelector(state => state.auth)
 
@@ -31,7 +33,9 @@ function App() {
       <Box component={'section'}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login-register" element={<LoginRegister />} />
+          <Route path="/login-register" element={!token?<LoginRegister/>:<Navigate to={'/'}/>} />
+          {/* <Route path="/login" element={!token?<Login/>:<Navigate to={'/'}/>} />
+          <Route path="/register" element={!token?<Register/>:<Navigate to={'/'}/>} /> */}
           <Route path="/cart" element={token ? <Cart /> : <Navigate to={'/login-register'} />} />
           <Route path="/products/:categoryName" element={<Products />} />
           <Route path="/product-detail/:id/:name" element={<ProductDetail />} />

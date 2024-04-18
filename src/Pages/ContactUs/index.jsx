@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Stack, Box, InputBase , Button } from '@mui/material';
+import { Typography, Stack, Box, InputBase, Button } from '@mui/material';
 const ContactUs = () => {
     return (
         <>
@@ -26,10 +26,10 @@ const ContactUs = () => {
 
                 </Box>
                 <Stack spacing={2}
-                sx={{
-                    padding: { lg: '20px 17%', md: '20px', sm: '20px', xs: '20px' },
-                    alignItems:'end'
-                }}
+                    sx={{
+                        padding: { lg: '20px 17%', md: '20px', sm: '20px', xs: '20px' },
+                        alignItems: 'end'
+                    }}
                 >
                     <InputBase placeholder="Name" sx={{
                         width: '100%',
@@ -61,20 +61,20 @@ const ContactUs = () => {
 
                     </InputBase>
 
-                    <textarea rows={16} style={{width:'100%',padding:'10px 15px',fontSize:'17px',borderRadius:'1px',backgroundColor:'#e6e6e6',border:'none'}} placeholder='Message'></textarea>
+                    <textarea rows={16} style={{ width: '100%', padding: '10px 15px', fontSize: '17px', borderRadius: '1px', backgroundColor: '#e6e6e6', border: 'none' }} placeholder='Message'></textarea>
 
                     <Button variant='contained'
-                         sx={{
-                            width:'83px',
-                            height:'40px',
+                        sx={{
+                            width: '83px',
+                            height: '40px',
                             padding: '6px 20px',
                             fontSize: '18px',
                             borderRadius: '2px',
                             backgroundColor: '#931817',
                             '&:hover': { backgroundColor: '#7D1414' }
                         }}>
-                            SEND
-                        </Button>
+                        SEND
+                    </Button>
 
                 </Stack>
             </Stack>

@@ -65,7 +65,7 @@ const Navbar = () => {
                         sx={{
                             color: 'black'
                         }}>
-                        {token ? <Typography component="a" sx={{ textDecoration: 'none ', color: 'black', fontSize: '16px', cursor: 'pointer' }} onClick={() => dispatch(logout())}> Logout </Typography> : <Link to={'/login'} style={{ textDecoration: 'none ', color: 'black', fontSize: '16px', }}>Sign in </Link>}  {token ? <></> : <>or</>}     {token ? <> </> : <Link to={'/register'} style={{ textDecoration: 'none ', color: 'black', fontSize: '16px' }}>Create an Account</Link>}
+                        {token ? <Typography component="a" sx={{ textDecoration: 'none ', color: 'black', fontSize: '16px', cursor: 'pointer' }} onClick={() => dispatch(logout())}> Logout </Typography> : <Link to={'/login-register'} style={{ textDecoration: 'none ', color: 'black', fontSize: '16px', }}>Sign in </Link>}  {token ? <></> : <>or</>}     {token ? <> </> : <Link to={'/login-register'} style={{ textDecoration: 'none ', color: 'black', fontSize: '16px' }}>Create an Account</Link>}
                     </Typography>
 
                     <Stack
@@ -114,7 +114,7 @@ const Navbar = () => {
                     position: drawerOpen ? 'fixed' : '',
                     top: '0',
                     component: 'nav',
-                    width: '100vw',
+                    width: '100%',
                     height: { lg: '57px', md: 'auto' },
                     justifyContent: { lg: 'left', md: 'space-between', sm: 'space-between', xs: 'space-between' },
                     alignItems: "center",
