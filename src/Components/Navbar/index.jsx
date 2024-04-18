@@ -23,7 +23,6 @@ const Navbar = () => {
     const lengthCart = useSelector(state => state.cart.list).length
     const { token } = useSelector((state) => state.auth);
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const [opencategory, setOpenCategory] = useState()
 
 
     return (
