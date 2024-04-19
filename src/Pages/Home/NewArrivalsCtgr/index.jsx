@@ -55,7 +55,7 @@ const NewArrivalsCtgr = () => {
                         New Arrivals
                     </Typography>
                     <Box sx={{ display: 'flex' }} >
-                        <Link to={'/products/New-Arrivals'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/1/New-Arrivals'} style={{ color: '#931817', textDecoration: "none" }}>
                             More New Arrivals
                         </Link><ChevronRightIcon color='error' size='small' />
                     </Box>

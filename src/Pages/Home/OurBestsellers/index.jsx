@@ -55,7 +55,7 @@ const OurBestsellers = () => {
                         Our Bestsellers
                     </Typography>
                     <Box sx={{display:'flex'}} >
-                        <Link to={'/products/Our-Bestsellers'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/2/Our-Bestsellers'} style={{ color: '#931817', textDecoration: "none" }}>
                         More Our Bestsellers
                     </Link><ChevronRightIcon color='error' size='small'/>
                     </Box>

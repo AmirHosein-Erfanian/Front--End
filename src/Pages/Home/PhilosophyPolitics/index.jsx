@@ -56,7 +56,7 @@ const PhilosophyPolitics = () => {
                         Philosophy & Politics
                     </Typography>
                     <Box sx={{ display: 'flex' }} >
-                        <Link to={'/products/Philosophy-&-Politics'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/5/Philosophy-&-Politics'} style={{ color: '#931817', textDecoration: "none" }}>
                             More Philosophy & Politics
                         </Link><ChevronRightIcon color='error' size='small' />
                     </Box>

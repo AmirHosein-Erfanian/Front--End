@@ -8,14 +8,13 @@ const Categories = () => {
             try {
                 const res = await fetch('http://localhost:1337/api/categories?populate=*')
                 const data = await res.json()
-                setproducts(data.data)
-                console.log(products);
+                setproducts(data.data);
             } catch (err) { alert(err) }
         })()
     }, [])
     const items = products?.map((e, index) => (
         <Grid key={index} item lg={3} md={3} sm={3} xs={6}>
-            <Link to={`/products/${e?.attributes?.Name.split(" ").join("-")}`}>
+            <Link to={`/products/${e?.id}/${e?.attributes?.Name.split(" ").join("-")}`}>
                 <Stack component={'div'}
                     sx={{
                         border:'1px solid #dedede',

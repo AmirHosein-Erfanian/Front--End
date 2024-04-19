@@ -36,7 +36,7 @@ function App() {
           {/* <Route path="/login" element={!token?<Login/>:<Navigate to={'/'}/>} />
           <Route path="/register" element={!token?<Register/>:<Navigate to={'/'}/>} /> */}
           <Route path="/cart" element={token ? <Cart /> : <Navigate to={'/login-register'} />} />
-          <Route path="/products/:categoryName" element={<Products />} />
+          <Route path="/products/:categoryid/:categoryName" element={<Products />} />
           <Route path="/product-detail/:id/:name" element={<ProductDetail />} />
           <Route path="/categories" element={<Categories/>} />
           <Route path="/about-us" element={<AboutUs />} />

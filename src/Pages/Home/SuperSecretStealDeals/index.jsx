@@ -55,7 +55,7 @@ const SuperSecretStealDeals = () => {
                         Super Secret Steal Deals
                     </Typography>
                     <Box sx={{ display: 'flex' }} >
-                        <Link to={'/products/Super-Secret-Steal-Deals'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/3/Super-Secret-Steal-Deals'} style={{ color: '#931817', textDecoration: "none" }}>
                             More Super Secret Steal Deals
                         </Link><ChevronRightIcon color='error' size='small' />
                     </Box>

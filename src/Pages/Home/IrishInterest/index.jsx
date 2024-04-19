@@ -55,7 +55,7 @@ const IrishInterest = () => {
                         Irish Interest
                     </Typography>
                     <Box sx={{ display: 'flex' }} >
-                        <Link to={'/products/Irish-Interest'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/4/Irish-Interest'} style={{ color: '#931817', textDecoration: "none" }}>
                             More Irish Interest
                         </Link><ChevronRightIcon color='error' size='small' />
                     </Box>

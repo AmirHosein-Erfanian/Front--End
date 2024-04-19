@@ -12,7 +12,6 @@ const ScienceFictionFantasy = () => {
                 let res = await fetch("http://localhost:1337/api/products?populate=*&filters[Name][$eq]=1984; George Orwell&filters[Name][$eq]=Do Androids Dream of Electric Sheep?; Philip K. Dick&filters[Name][$eq]=Earthsea: The First Four Books; Ursula K. Le Guin&filters[Name][$eq]=Neverwhere; Neil Gaiman");
                 const data = await res.json()
                 setproducts(data.data);
-                console.log(data.data);
             }
             catch (err) { alert(err) }
 
@@ -57,7 +56,7 @@ const ScienceFictionFantasy = () => {
                 Science Fiction & Fantasy
                 </Typography>
                 <Box sx={{ display: 'flex' }} >
-                        <Link to={'/products/Science-Fiction-&-Fantasy'} style={{ color: '#931817', textDecoration: "none" }}>
+                        <Link to={'/products/6/Science-Fiction-&-Fantasy'} style={{ color: '#931817', textDecoration: "none" }}>
                             More Science Fiction & Fantasy
                         </Link><ChevronRightIcon color='error' size='small' />
                     </Box>
