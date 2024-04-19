@@ -12,19 +12,62 @@ import {
     Grid,
     Drawer,
     IconButton,
+    Badge
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useSelector, useDispatch } from 'react-redux';
 import MenuIcon from "@mui/icons-material/Menu";
 import { logout } from "../../Store/Slices/Auth";
+export const Result = ({ img, name, id }) => {
+    return (
+        <>
+            <Link style={{ color: '#931817' }} to={`/product-detail/${id}/${name.split(" ").join("-")}`}>
+                <Stack
+                    flexDirection={"row"}
+                    p={"10px"}
+                    sx={{ borderBottom: "1px solid gray", gap: '10px' }}
+                >
+                    <img src={img} alt={name} style={{ width: "60px", height: "60px" }} />
+                    <Typography variant="body2">{name}</Typography>
+                </Stack>
+            </Link>
+        </>
+    );
+};
 const Navbar = () => {
     const dispatch = useDispatch();
     const lengthCart = useSelector(state => state.cart.list).length
     const { token } = useSelector((state) => state.auth);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    // const [open, setopen] = useState('');
+    const [searchInp, setSearchInp] = useState("");
+    const [result, setResult] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-
+    window.addEventListener("click", (e) => {
+        if (!e.target.closest(".searchResult")) {
+            setSearchInp("");
+        }
+    });
+    useEffect(() => {
+        if (searchInp) {
+            (async () => {
+                const res = await fetch(`http://localhost:1337/api/products?populate=*&filters[Name][$containsi]=${searchInp}`);
+                const data = await res.json()
+                setResult(data?.data);
+                setLoading(false)
+            })();
+        }
+    }, [searchInp]);
+    const items = result?.map((e, index) => (
+        <Result
+            key={index}
+            id={e?.id}
+            name={e?.attributes.Name}
+            img={import.meta.env.VITE_BASE_URL +e?.attributes.image?.data?.attributes?.url}
+        />
+    ));
     return (
         <>
             <Grid container
@@ -75,52 +118,86 @@ const Navbar = () => {
                             justifyContent: 'end'
                         }}>
 
-                        <InputBase placeholder="search all products..." sx={{
-                            width: '49%',
-                            height: '45px',
-                            backgroundColor: '#F3F3F3',
-                            "&:hover": { background: '#e6e6e6' },
-                            borderRadius: '1px',
-                            padding: '10px 15px',
-                        }}>
+                        <Box sx={{ position: "relative", width: '49%' }}>
 
-                        </InputBase>
+                            <InputBase placeholder="search all products..."
+                                value={searchInp}
+                                onChange={(e) => {
+                                    setSearchInp(e.target.value)
+                                    setLoading(true)
+                                }}
+                                sx={{
+                                    width: '100%',
+                                    height: '45px',
+                                    backgroundColor: '#F3F3F3',
+                                    "&:hover": { background: '#e6e6e6' },
+                                    borderRadius: '1px',
+                                    padding: '10px 15px',
+                                }}>
 
-                        <Button variant="contained" startIcon={<ShoppingCartIcon sx={{
-                            color: '#545454',
-                        }} />}
-                            sx={{
-                                width: '19%',
-                                borderRadius: '3px !important',
-                                height: '45px',
-                                boxShadow: 'none',
-                                fontSize: '18px',
-                                backgroundColor: '#F3F3F3',
-                                color: '#545454',
-                                "&:hover": { backgroundColor: '#e6e6e6' }
-                            }} >
-                            CART
-                        </Button>
+                            </InputBase>
+                            <Stack
+                                className="searchResult"
+                                sx={{
+                                    width: "100%",
+                                    height: searchInp ? "350px" : "0px",
+                                    position: "absolute",
+                                    top: "100%",
+                                    alignItems: 'center',
+                                    left: 0,
+                                    zIndex: 100000,
+                                    backgroundColor: "#e6e6e6",
+                                    borderRadius: "0 0 20px 20px",
+                                    transition: "all 1s",
+                                    overflowY: searchInp ? "auto" : "hidden",
+                                }}
+                            >
+                                {loading ? <Typography>Searching ...</Typography> : result?.length > 0 ? <>{items}</> : <Typography>not found</Typography>}
+                            </Stack>
+                        </Box>
+
+
+
+
+                        <Badge badgeContent={lengthCart} sx={{ display: 'flex', alignItems: 'center' }} color="primary">
+                            <Link to={'/cart'}>
+                                <Button variant="contained" startIcon={<ShoppingCartIcon sx={{
+                                    color: '#545454',
+                                }} />}
+                                    sx={{
+                                        borderRadius: '3px !important',
+                                        height: '45px',
+                                        boxShadow: 'none',
+                                        fontSize: '18px',
+                                        backgroundColor: '#F3F3F3',
+                                        color: '#545454',
+                                        "&:hover": { backgroundColor: '#e6e6e6' }
+                                    }} >
+                                    CART
+                                </Button>
+                            </Link>
+                        </Badge>
+
 
                     </Stack>
-
 
                 </Grid>
             </Grid>
 
             <Stack
                 sx={{
+                    className: 'nav-two',
                     position: drawerOpen ? 'fixed' : '',
                     top: '0',
                     component: 'nav',
+                    zIndex: drawerOpen ? '2' : '',
                     width: '100%',
                     height: { lg: '57px', md: 'auto' },
                     justifyContent: { lg: 'left', md: 'space-between', sm: 'space-between', xs: 'space-between' },
                     alignItems: "center",
                     flexDirection: "row",
-                    padding: { lg: '0px 10%', md: '0px  6%' , sm:'0px 2%' , xs:'0px 2%' },
+                    padding: { lg: '0px 10%', md: '0px  6%', sm: '0px 2%', xs: '0px 2%' },
                     bgcolor: '#931817',
-                    className: 'nav-two',
                     boxShadow: 'none !important'
                 }}
             >
@@ -143,13 +220,13 @@ const Navbar = () => {
                 >
                     <ListItem ><Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>Home</Link></ListItem>
                     <ListItem><Link to={'/about-us'} style={{ textDecoration: 'none', color: 'white' }} >AboutUs</Link></ListItem>
-                    <ListItem sx={{ position: 'relative',"&:hover":{"&  Box":{display:'inline-block'}} }}><Link to={'/categories'} style={{ textDecoration: 'none', color: 'white', whiteSpace: 'nowrap' }}>Browse By Category</Link>
+                    <ListItem sx={{ position: 'relative' }}><Link to={'/categories'} style={{ textDecoration: 'none', color: 'white', whiteSpace: 'nowrap' }}>Browse By Category</Link>
                         <Box sx={{
                             display: 'none ',
                             position: 'absolute',
                             top: '50px',
                             width: '260px !important',
-                            height: 'auto',
+                            height: open ? "400px" : "0px",
                             backgroundColor: '#F3F3F3',
                             zIndex: '10',
 
@@ -180,22 +257,26 @@ const Navbar = () => {
                     <ListItem><Link to={'/testimonials'} style={{ textDecoration: 'none', color: 'white' }} >Testimonials</Link></ListItem>
                 </List>
 
-                <Button variant="contained" startIcon={<ShoppingCartIcon sx={{
-                    color: 'white',
-                }} />}
-                    sx={{
-                        display: { xs: "flex", sm: 'flex', md: "none" },
-                        width: '100px',
-                        borderRadius: '3px !important',
-                        height: '40px',
-                        boxShadow: 'none',
-                        fontSize: '15px',
-                        backgroundColor: '#931817',
-                        color: 'white',
-                        "&:hover": { backgroundColor: '#931817', boxShadow: 'none' }
-                    }} >
-                    CART
-                </Button>
+                <Badge badgeContent={lengthCart} sx={{ display: { xs: "flex", sm: 'flex', md: "none" , lg:'none' }, alignItems: 'center', color: 'primary' }} >
+                    <Link to={'/cart'}>
+                        <Button variant="contained" startIcon={<ShoppingCartIcon sx={{
+                            color: 'white',
+                        }} />}
+                            sx={{
+                                display: { xs: "flex", sm: 'flex', md: "none" },
+                                width: '100px',
+                                borderRadius: '3px !important',
+                                height: '40px',
+                                boxShadow: 'none',
+                                fontSize: '15px',
+                                backgroundColor: '#931817',
+                                color: 'white',
+                                "&:hover": { backgroundColor: '#931817', boxShadow: 'none' }
+                            }} >
+                            CART
+                        </Button>
+                    </Link>
+                </Badge>
 
                 <Drawer anchor="bottom" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                     <List
@@ -208,6 +289,47 @@ const Navbar = () => {
                             },
                         }}
                     >
+                        
+                        <ListItem sx={{ height: '57px' }}>
+                            <Box sx={{ position: "relative", width: '100%' }}>
+
+                            <InputBase placeholder="search all products..."
+                        value={searchInp}
+                        onChange={(e) => {
+                            setSearchInp(e.target.value)
+                            setLoading(true)
+                        }}
+                            sx={{
+                                width: '100%',
+                                height: '45px',
+                                backgroundColor: '#931817',
+                                "&:hover": { background: '#931817' },
+                                borderRadius: '1px',
+                                border: '1px solid white',
+                                padding: '10px 15px',
+                            }}>
+
+                        </InputBase>
+                                <Stack
+                                    className="searchResult"
+                                    sx={{
+                                        width: "100%",
+                                        height: searchInp ? "350px" : "0px",
+                                        position: "absolute",
+                                        top: "100%",
+                                        alignItems: 'center',
+                                        left: 0,
+                                        zIndex: 100000,
+                                        backgroundColor: "#e6e6e6",
+                                        borderRadius: "0 0 20px 20px",
+                                        transition: "all 1s",
+                                        overflowY: searchInp ? "auto" : "hidden",
+                                    }}
+                                >
+                                    {loading ? <Typography>Searching ...</Typography> : result?.length > 0 ? <>{items}</> : <Typography>not found</Typography>}
+                                </Stack>
+                            </Box>
+                        </ListItem>
                         <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #DF3331', borderWidth: '0.5px 0 0' }} />
                         <ListItem sx={{ height: '57px' }}>
                             <Link to={"/"}>Home</Link>
@@ -238,26 +360,9 @@ const Navbar = () => {
                         </ListItem>
                         <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #DF3331', borderWidth: '0.5px 0 0' }} />
 
-                        {token ? (
-                            <ListItem sx={{ height: '57px', cursor: 'pointer' }}>
-                                <Typography component="a" onClick={() => dispatch(logout())}>
-                                    Logout
-                                </Typography>
-                            </ListItem>
-                        ) : (
-                            <ListItem sx={{ height: '57px' }}>
-                                <Link to={"/login"}>Login</Link>
-                            </ListItem>
-                        )}
+                        {token ?
+                            <Typography component="a" sx={{ textDecoration: 'none ', color: 'black', fontSize: '16px', cursor: 'pointer', height: '57px' }} onClick={() => dispatch(logout())}> Logout </Typography> : <Link to={'/login-register'} style={{ textDecoration: 'none ', color: 'black', fontSize: '16px', }}>Sign in or Create an Account </Link>}
 
-                        <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #DF3331', borderWidth: '0.5px 0 0' }} />
-                        {token ? (
-                            <> </>
-                        ) : (
-                            <ListItem sx={{ height: '57px' }}>
-                                <Link to={"/register"}>Create an Account</Link>
-                            </ListItem>
-                        )}
                         <hr color='gray' style={{ clear: 'both', height: '0', borderTop: 'solid #DF3331', borderWidth: '0.5px 0 0' }} />
                     </List>
                 </Drawer>
@@ -275,6 +380,14 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+
+
+
+
+
+
+
 
 
 

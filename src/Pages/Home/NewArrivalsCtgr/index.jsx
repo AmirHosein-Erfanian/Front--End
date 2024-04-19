@@ -11,7 +11,6 @@ const NewArrivalsCtgr = () => {
             try {
                 let res = await fetch("http://localhost:1337/api/products?populate=*&filters[id][$lte]=4");
                 const data = await res.json()
-                setproducts(data.data);
             }
             catch (err) { alert(err) }
 

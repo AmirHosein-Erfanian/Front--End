@@ -1,8 +1,21 @@
 import { Box, Button, Stack, Typography, Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import pic from './assets/pic.webp';
 import './style.css'
+import { Link } from 'react-router-dom';
 const BookWeek = () => {
+    const [product, setproduct] = useState();
+    useEffect(()=>{
+        (async () => {
+            try{
+            const res = await fetch(`http://localhost:1337/api/products?populate=*&filters[Name][$eqi]=A Little HISTORY of DUBLIN`);
+            const data = await res.json();
+            setproduct(data.data[0]);
+            console.log(product);
+        }catch(err){alert(err)}
+            
+        })();
+    },[])
     return (
         <>
             <Grid container spacing={5}
@@ -17,7 +30,7 @@ const BookWeek = () => {
                         height: '100%',
                     }}
                 >
-                    <img src={pic} alt="" style={{ width: '100%', height: '100%' }} />
+                    <img src={import.meta.env.VITE_BASE_URL +product?.attributes?.image?.data?.attributes?.url} alt="" style={{ width: '100%', height: '100%' }} />
                 </Grid>
                 <Grid item lg={6} md={6} sm={6} xs={12}>
                     <Stack sx={{
@@ -40,12 +53,9 @@ const BookWeek = () => {
                                 fontSize: '20px',
                                 lineHeight: '30px'
                             }} >
-                            There is a great city called Dublin
-                            Who's past is both proud and puzzlin'
-                            A museum founder writes
-                            'cause he gives many shites
-                            About its history so humblin'
+                            {product?.attributes?.description}
                         </Typography>
+                        <Link to={`/product-detail/${product?.id}/${product?.attributes?.Name.split(" ").join("-")}`}>
                         <Button className='book-week' variant='contained' sx={{
                             padding: '6px 20px',
                             fontSize: '18px',
@@ -54,7 +64,7 @@ const BookWeek = () => {
                             '&:hover': { backgroundColor: '#7D1414' }
                         }}>
                             HAVE A LOOK HERE
-                        </Button>
+                        </Button></Link>
                     </Stack>
 
                 </Grid>
